@@ -43,7 +43,7 @@ Add-NewS1Site -Name "Name Of Client"
 ```
 > This will automatically create Workstation and Server device groups.
 
-### Clear out store API Key and Server FQDN
+### Clear out stored API Key and Server FQDN
 ```powershell
 Reset-S1ModuleConfig
 ```
