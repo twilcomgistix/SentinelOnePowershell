@@ -293,10 +293,10 @@ Function Add-NewS1Site {
     $req = Submit-BaseS1PostRequest -endpoint "sites" -payload $payload
     $req.data.id
     Add-S1SiteFilters -siteId "$($req.data.id)"
-    $users = Get-S1User -all | Where {$_.source -eq "sso_saml"} | Select email,id
-    $users | ForEach {
-        Set-S1UserRole -email $_.email -siteId "$($req.data.id)" -role "Admin"
-    }
+    # $users = Get-S1User -all | Where {$_.source -eq "sso_saml"} | Select email,id
+    # $users | ForEach {
+    #     Set-S1UserRole -email $_.email -siteId "$($req.data.id)" -role "Admin"
+    # }
 }
 
 Function Update-AgentsSiteWide {

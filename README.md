@@ -29,7 +29,7 @@ Get-S1Sites
 ```powershell
 Get-S1Site -Name "Example Site Name"
 ```
-> Get all data for a chosen client. The `Name` field should be identical to the Client's company name in ConnectWise Manage.
+> Get all data for a chosen client.
 ```powershell
 Get-S1Site -id 12345678910928376
 ```
@@ -41,7 +41,7 @@ Use the `-IncludeDeleted` flag to search for sites that are no longer active.
 ```powershell
 Add-NewS1Site -Name "Name Of Client"
 ```
-> This will automatically create Workstation and Server device groups and assign all InfiNet Users as site-level admin for the client.
+> This will automatically create Workstation and Server device groups.
 
 ### Clear out store API Key and Server FQDN
 ```powershell
