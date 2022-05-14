@@ -69,7 +69,7 @@ Use `Get-NewApiToken.ps1` to generate a new API Token. Executing that script wil
 
 This script is a proof of concept. If you run it, your new token will be printed to your terminal where you can save it somewhere safe.
 
-I recommend adapting that script to store its results in your RMM or whatever tool your using to deploy installations and other API calls from. Make it so that it generates a new token and stores it in a variable that the installation script can reference and that the New token script can also reference the very next time it runs.
+I recommend adapting that script to store its results in your RMM or whatever tool you're using to deploy installations and other API calls from. Make it so that it generates a new token and stores it in a variable that the installation script can reference and that the New token script can also reference the very next time it runs.
 
 If you do it this way, you will never have to manually update the API Token which expires every 6 months. 
 
