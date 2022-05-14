@@ -17,6 +17,13 @@ A tool to intreract with Sentinel One from Powershell
 ## Description
 Leverages the Sentinel One API to allow users to get information, create/edit sites, execute actions on agents, and more.
 
+This module is meant mostly for real time interaction with Sentinel One from the Powershell terminal. It depends on your API Token, hostname, and site id stored in your Windows user profile $ENV.
+The first time you use it, it requires user interaction.
+
+If you need to use it to perform tasks unattended, then you'll need to modify some of it. I would recommend copying some of the functions elsewhere instead of modifying the module directly if you actively use it.
+
+Additionally, you can use the "Base" request functions to build other functions inside the module that you might find handy or most useful. You can see a demonstration in the final example below.
+
 ## Examples
 ### Enter and store API Key and Server FQDN
 ```powershell
