@@ -75,13 +75,26 @@ Function Get-BaseS1Request {
     Param (
         [Parameter(Mandatory=$true)][string]$endpoint
     )
-    $config = Set-S1ModuleConfig
-    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $headers.Add("Authorization", "ApiToken $($config.apiToken)")
-    $headers.Add("Content-Type", "application/json")
-    $url = "https://$($config.url)/web/api/v2.1/$endpoint"
-    $req = Invoke-RestMethod -Uri $url -Method 'GET' -Headers $headers
-    return $req.data
+    Try {
+        $config = Set-S1ModuleConfig
+        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+        $headers.Add("Authorization", "ApiToken $($config.apiToken)")
+        $headers.Add("Content-Type", "application/json")
+        $url = "https://$($config.url)/web/api/v2.1/$endpoint"
+
+        $Data = @()
+        $req = Invoke-RestMethod -Uri $url -Method 'GET' -Headers $headers
+        $Data += $req.data
+        if ($req.pagination.nextCursor) {
+            Do {
+                $req = Invoke-RestMethod -Uri "$url&cursor=$($req.pagination.nextCursor)" -Method 'GET' -Headers $headers
+                $Data += $req.data
+            } Until (!$req.pagination.nextCursor)
+        }
+        Return $Data
+    } Catch {
+        Write-Error $_
+    }
 }
 
 Function Submit-BaseS1PostRequest {
