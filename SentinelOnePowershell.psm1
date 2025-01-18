@@ -150,8 +150,8 @@ Function Remove-S1Site {
 }
 
 Function Get-S1Sites {
-    $data = Get-BaseS1Request -endpoint "sites?limit=100&state=active"
-    $data.sites | ForEach {
+    $data = Get-BaseS1Request -endpoint "sites?lstate=active"
+    $data.sites | % {
         $site = [PSCustomObject]@{
             Name = $_.name
             Sku = $_.sku
